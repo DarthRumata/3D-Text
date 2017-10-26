@@ -53,6 +53,7 @@ class GameViewController: UIViewController {
     scnView.showsStatistics = true
     // configure the view
     scnView.backgroundColor = UIColor.black
+    scnView.autoenablesDefaultLighting = false
 
     // add a tap gesture recognizer
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
@@ -125,12 +126,12 @@ class GameViewController: UIViewController {
 
   private func addLight(for scene: SCNScene) {
     let light = SCNLight()
-    light.type = .omni
-    light.spotOuterAngle = .pi / 40
-    light.intensity = 300
+    light.type = .spot
+    light.spotOuterAngle = 20
+    light.intensity = 750
     light.castsShadow = true
     let lightNode = SCNNode()
-    lightNode.position = SCNVector3(x: 0, y: -0.2, z: 4)
+    lightNode.position = SCNVector3(x: 0, y: 0.3, z: 4)
     lightNode.light = light
     lightOrbit = SCNNode()
     lightOrbit.addChildNode(lightNode)
