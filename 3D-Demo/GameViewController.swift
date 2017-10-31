@@ -70,14 +70,12 @@ class GameViewController: UIViewController {
       let result: AnyObject = hitResults[0]
 
       let node = result.node!
-      guard node.name == "pyramid" else {
-        return
-      }
+      let angle = node.name == "pyramid" ? 0 : baseAngle
 
       // rotate it
       SCNTransaction.begin()
       SCNTransaction.animationDuration = 0.5
-      node.eulerAngles.x = 0
+      pyramid.eulerAngles.x = angle
       SCNTransaction.commit()
     }
   }
